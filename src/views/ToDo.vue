@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="welcome">{{welcomeMessage}}</div>
+  <div class="to-do-container">
+    <div class="welcome">{{ welcomeMessage }}</div>
 
     <div class="alert alert-primary" v-show="message">{{ message }}</div>
 
@@ -8,7 +8,12 @@
       <div class="form-group row">
         <label for="Name" class="col-sm-1">Title</label>
         <div class="col-sm-4">
-          <input type="text" id="Name" v-model="model.Name" class="form-control" />
+          <input
+            type="text"
+            id="Name"
+            v-model="model.Name"
+            class="form-control"
+          />
         </div>
         <div class="form-check">
           <input
@@ -17,21 +22,23 @@
             v-model="model.IsCompleted"
             class="form-check-input"
           />
-          <label for="isCompleted" class="form-check-label">Completed</label>
+          <label for="isCompleted" class="form-check-label">
+            Completed
+          </label>
         </div>
       </div>
       <div>
-        <button type="submit" @click="AddToDo()" class="btn btn-primary">Add ToDo</button>
+        <button type="submit" @click="AddToDo()" class="btn btn-primary">
+          Add ToDo
+        </button>
       </div>
     </div>
 
     <section>
       <ol class="list-group">
-        <li
-          class="list-group-item"
-          v-for="todo of ToDos"
-          :key="todo.Name"
-        >{{ todo.Name}}, {{ todo.IsCompleted ? "Completed" : "Not Done" }}</li>
+        <li class="list-group-item" v-for="todo of ToDos" :key="todo.Name">
+          {{ todo.Name }}, {{ todo.IsCompleted ? "Completed" : "Not Done" }}
+        </li>
       </ol>
     </section>
   </div>
@@ -83,20 +90,37 @@ export default class ToDoWithoutStore extends Vue {
 }
 </script>
 
-<style scoped>
-.welcome {
-  color: #090629e5;
-  margin: 20px;
-  font-size: 20px;
-}
-.message {
-  margin: 20px;
-  font-size: 14px;
-}
-section {
-  margin: 20px;
-}
-ol.list-group li:nth-of-type(even) {
-  background: #cdecda;
+<style lang="scss" scoped>
+.to-do-container {
+  border: 1px solid #cccccc;
+  width: 600px;
+  margin: 48px auto;
+  background: whitesmoke;
+  border-radius: 8px;
+
+  .welcome {
+    color: #090629e5;
+    margin: 20px;
+    font-size: 20px;
+  }
+  .message {
+    margin: 20px;
+    font-size: 14px;
+  }
+  section {
+    margin: 20px;
+  }
+  .list-group-item {
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #ababab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px 40px;
+    height: 48px;
+    font-size: 16px;
+    color: #5f5f5f;
+  }
 }
 </style>
